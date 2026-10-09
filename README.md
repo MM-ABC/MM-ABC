@@ -1,13 +1,4 @@
-<p align="center">
-  <img src="assets/logo.png" alt="MM-ABC" width="460">
-</p>
-
-<h1 align="center">MM-ABC</h1>
-
-<p align="center">
-  Towards generalist mobile manipulation<br>
-  via <b>seeing</b>, <b>coordinating</b>, and <b>imagining</b> arm–base collaboration.
-</p>
+<h1 align="center">MM-ABC: Towards Generalist Mobile Manipulation via Seeing, Coordinating and Imagining</h1>
 
 <p align="center">
   <a href="https://mm-abc.github.io/"><img src="https://img.shields.io/badge/Project-mm--abc.github.io-2474F4?style=for-the-badge" alt="Project"></a>
@@ -22,8 +13,6 @@
   <img src="assets/pipeline.png" alt="MM-ABC architecture" width="100%">
 </p>
 
-<p align="center"><i>Sparse visual features condition two action streams. A future stream is used only while training.</i></p>
-
 MM-ABC reads multi-view images, an instruction, and a robot state, then generates a short action chunk. The default objective predicts the **clean action** (`pred_type: x`) and scores it in **velocity space** (`loss_type: v`).
 
 | | |
@@ -34,29 +23,18 @@ MM-ABC reads multi-view images, an instruction, and a robot state, then generate
 
 Real-world demonstrations are released as **[MM-30](https://huggingface.co/datasets/Kivy/MM-30)** on Hugging Face.
 
-<p align="center">
-  <img src="assets/xpred.png" alt="Clean-action prediction" width="100%">
-</p>
-
 ## Action space
 
-The released interface is the **75-dimensional MiVerse** vector. Poses enter as `[x, y, z, qw, qx, qy, qz]` and are stored as position plus a 6D rotation. `pack` / `unpack` convert between raw keys and this vector. Values passed into the network are normalised.
+The released interface is the **75-dimensional MiVerse** vector. Adapting the model to a different benchmark requires editing this action configuration. Poses enter as `[x, y, z, qw, qx, qy, qz]` and are stored as position plus a 6D rotation. `pack` / `unpack` convert between raw keys and this vector. Values passed into the network are normalised.
 
-| Slice | Signal | Raw key |
-|---|---|---|
-| 0:7 | left arm joints | `left_arm_joint_state` |
-| 7:14 | right arm joints | `right_arm_joint_state` |
-| 14:26 | left hand | `left_ee_joint_state` |
-| 26:38 | right hand | `right_ee_joint_state` |
-| 38:47 | left end-effector pose | `left_base_ee_pose` |
-| 47:56 | right end-effector pose | `right_base_ee_pose` |
-| 56:58 | waist | `waist_joint_state` |
-| 58:60 | leg | `leg_joint_state` |
-| 60:69 | head pose | `head_base_pose` |
-| 69:72 | root linear velocity | `root_linear_velocity` |
-| 72:75 | root angular velocity | `root_angular_velocity` |
-
-Cameras: `primary` → `cam_head`, `wrist_left` → `cam_left_wrist`, `wrist_right` → `cam_right_wrist`. Images are 224×224.
+| Slice | Signal | Raw key | Slice | Signal | Raw key |
+|---|---|---|---|---|---|
+| 0:7 | left arm joints | `left_arm_joint_state` | 56:58 | waist | `waist_joint_state` |
+| 7:14 | right arm joints | `right_arm_joint_state` | 58:60 | leg | `leg_joint_state` |
+| 14:26 | left hand | `left_ee_joint_state` | 60:69 | head pose | `head_base_pose` |
+| 26:38 | right hand | `right_ee_joint_state` | 69:72 | root linear velocity | `root_linear_velocity` |
+| 38:47 | left end-effector pose | `left_base_ee_pose` | 72:75 | root angular velocity | `root_angular_velocity` |
+| 47:56 | right end-effector pose | `right_base_ee_pose` | | | |
 
 ## Quick start
 
