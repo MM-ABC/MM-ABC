@@ -11,9 +11,11 @@
 
 <p align="center">
   <a href="https://mm-abc.github.io/"><img src="https://img.shields.io/badge/Project-mm--abc.github.io-2474F4?style=for-the-badge" alt="Project"></a>
+  <a href="https://arxiv.org/abs/2609.35652"><img src="https://img.shields.io/badge/arXiv-2609.35652-F6B51F?style=for-the-badge" alt="arXiv"></a>
   <a href="https://github.com/MM-ABC/MM-ABC"><img src="https://img.shields.io/badge/Code-MM--ABC-8646E9?style=for-the-badge&logo=github" alt="Code"></a>
+  <a href="https://huggingface.co/datasets/Kivy/MM-30"><img src="https://img.shields.io/badge/Data-MM--30-08B899?style=for-the-badge&logo=huggingface" alt="MM-30"></a>
   <a href="https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct"><img src="https://img.shields.io/badge/Backbone-Qwen3--VL--4B-F74770?style=for-the-badge&logo=huggingface" alt="Qwen3-VL"></a>
-  <a href="https://huggingface.co/facebook/VGGT-Omega"><img src="https://img.shields.io/badge/Teacher-VGGT--Omega-08B899?style=for-the-badge&logo=huggingface" alt="VGGT-Omega"></a>
+  <a href="https://huggingface.co/facebook/VGGT-Omega"><img src="https://img.shields.io/badge/Teacher-VGGT--Omega-35416B?style=for-the-badge&logo=huggingface" alt="VGGT-Omega"></a>
 </p>
 
 <p align="center">
@@ -29,6 +31,8 @@ MM-ABC reads multi-view images, an instruction, and a robot state, then generate
 | **Seeing** | Qwen3-VL-4B. Layers 11, 19, 27, and 35 condition the action expert. |
 | **Coordinating** | Manipulation `[0, 56)` and body motion `[56, 75)` share masked attention. |
 | **Imagining** | A future head matches frozen [VGGT-Omega](https://huggingface.co/facebook/VGGT-Omega) features. Dropped at inference. |
+
+Real-world demonstrations are released as **[MM-30](https://huggingface.co/datasets/Kivy/MM-30)** on Hugging Face.
 
 <p align="center">
   <img src="assets/xpred.png" alt="Clean-action prediction" width="100%">
@@ -113,10 +117,10 @@ arm = unpack(action[0, :16].float().cpu().numpy())["left_arm_joint_state"]
 ## Citation
 
 ```bibtex
-@article{liang2026mmabc,
-  title   = {MM-ABC: Towards Generalist Mobile Manipulation via Seeing, Coordinating and Imagining},
-  author  = {Liang, Qiwei and Chen, Guangyu and Zhu, Shaolong and Xiao, Zikuan and Lu, Jinxuan and Xie, Yifan and Xu, Renjing and Ding, Wenbo and Chen, Tianxing},
-  year    = {2026},
-  url     = {https://mm-abc.github.io/}
+@article{liang2026mm,
+  title={MM-ABC: Towards Generalist Mobile Manipulation via Seeing, Coordinating and Imagining},
+  author={Liang, Qiwei and Chen, Guangyu and Zhu, Shaolong and Xiao, Zikuan and Lu, Jinxuan and Xie, Yifan and Xu, Renjing and Ding, Wenbo and Chen, Tianxing},
+  journal={arXiv preprint arXiv:2609.35652},
+  year={2026}
 }
 ```
