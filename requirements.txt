@@ -1,0 +1,7 @@
+torch>=2.6
+transformers>=4.57,<4.58
+numpy>=1.26
+omegaconf>=2.3
+pillow>=10
+einops
+safetensors
